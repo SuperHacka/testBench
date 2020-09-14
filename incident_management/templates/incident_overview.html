@@ -1,0 +1,427 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block page_content %}
+<div class="row">
+    <div class="col">
+        <div class="dropdown" style="margin-bottom: 3%; ">
+            <strong style="font-size: 24px;" id="incident-header" data-toggle="dropdown">
+                All Incidents <i class="fas fa-caret-down fa-xs"></i>
+            </strong>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1" id="filter-dropdown">
+
+                <div class="input-group input-group-sm" style="padding: 0 10px 5px 10px;">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        placeholder="Search filter" id="filter-dropdown-search" onkeyup="filterFunction()">
+                </div>
+
+                <div id="filter-dropdown-content" class="dropdown-content">
+                    <!-- <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"> -->
+                    <h6 class="dropdown-header" id="header">General Filters</h6>
+                    <a class="dropdown-item" id="filter-state" data-custom-id="All">All Incidents</a>
+
+                    <div class="dropdown-divider" id="divider"></div>
+                    <h6 class="dropdown-header" id="header">Incidents By State</h6>
+                    <a class="dropdown-item" id="filter-state" data-custom-id="Assigned">Assigned</a>
+                    <a class="dropdown-item" id="filter-state" data-custom-id="In Progress">In Progress</a>
+                    <a class="dropdown-item" id="filter-state" data-custom-id="Resolved">Resolved</a>
+                    <a class="dropdown-item" id="filter-state" data-custom-id="Open">Open</a>
+
+                    <div class="dropdown-divider" id="divider"></div>
+                    <h6 class="dropdown-header" id="header">Incidents By Priority</h6>
+                    <a class="dropdown-item" id="filter-priority" data-custom-id="HIGH">High Priority Tickets</a>
+                    <div class="dropdown-divider" id="divider"></div>
+
+                    <h6 class="dropdown-header" id="header">User-specific Filters</h6>
+                    <a class="dropdown-item" id="filter-assigned-to" data-custom-id="Jason Chao">My Open Tickets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Show/Hide Columns Dropdown Menu -->
+    <div class="col text-right">
+        <!-- <div class="input-group mb-3 ml-auto" style="margin-top: 0.5rem!important; width: 50%;"> -->
+        <!-- <div class="input-group mb-3 ml-auto" style="width: 50%;">
+            <input type="text" class="form-control" id="search-input" placeholder="Search incident" aria-label="search">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+        </div> -->
+
+        <div class="dropdown ml-auto" style="margin-bottom: 3%;">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-table" aria-hidden="true"></i> &nbsp Show/Hide Columns
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" id="show-hide-col-dropdown" aria-labelledby="dropdownMenuButton">
+                <!-- Dropdown header -->
+                <h6 class="dropdown-header">Edit Columns:</h6>
+
+                <!-- Show/hide ID column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="0" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        ID
+                    </label>
+                </a>
+
+                <!-- Show/hide State column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="1" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        State
+                    </label>
+                </a>
+
+                <!-- Show/hide Title column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="2" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Title
+                    </label>
+                </a>
+
+                <!-- Show/hide Priority column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="3" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Priority
+                    </label>
+                </a>
+
+                <!-- Show/hide Classification column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="4" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Classification
+                    </label>
+                </a>
+
+                <!-- Show/hide Portal column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="5" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Portal
+                    </label>
+                </a>
+
+                <!-- Show/hide Reported By column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="6" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Reported By
+                    </label>
+                </a>
+
+                <!-- Show/hide Support Group column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="7" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Support Group
+                    </label>
+                </a>
+
+                <!-- Show/hide Assigned To column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="8" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Assigned To
+                    </label>
+                </a>
+
+                <!-- Show/hide SLAs column -->
+                <a class="dropdown-item">
+                    <input class="toggle-vis" id="defaultCheck1" type="checkbox" data-column="9" value="" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        SLAs
+                    </label>
+                </a>
+
+                <!-- Toggle via link -->
+                <!-- <a class="dropdown-item toggle-vis" data-column="0">ID</a>
+                <a class="dropdown-item toggle-vis" data-column="1">State</a>
+                <a class="dropdown-item toggle-vis" data-column="2">Title</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div>
+    Toggle column: <a class="toggle-vis" data-column="0">ID</a> - <a class="toggle-vis" data-column="1">Position</a>
+</div> -->
+
+<!-- INCIDENT OVERVIEW TABLE -->
+<div>
+    <table class="table table-hover table-center" id="overview-table">
+        <thead>
+            <tr style="font-size: 16px; color: #576271;">
+                <th>ID</th>
+                <th>STATE</th>
+                <th>TITLE</th>
+                <th>PRIORITY</th>
+                <th>CLASSIFICATION</th>
+                <th>PORTAL</th>
+                <th style="width: 15%;">REPORTED BY</th>
+                <th>SUPPORT GROUP</th>
+                <th>ASSIGNED TO</th>
+                <th>SLAs</th>
+            </tr>
+        </thead>
+        <tbody id="incident-table" style="font-size: 14px;">
+            <!-- Model Pop -->
+            <tr id="off-canvas-pop" class="table-row">
+                <td class="row-center"><b>ID12345</b></td>
+                <td class="row-center"><label class="badge badge-warning">Assigned</label></td>
+                <td>
+                    <strong><a href="">Account Locked</a></strong>
+                    <br>Short description
+                </td>
+                <td class="row-center">
+                    <i class="fas fa-arrow-up" style="color: red"></i>
+                    <strong>HIGH</strong>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align:middle; color: blue"></i>
+                    &nbsp Applications
+                </td>
+                <td class="row-center">Email</td>
+                <td class="row-center">
+                    <a href="" class="nav-link" style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/test.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">
+                        Muhd Rahiman
+                    </a>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align: middle; color: purple"></i>
+                    &nbsp Infrastructure
+                </td>
+                <td class="row-center">
+                    <a href="" class="nav-link" style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/IMG_3063.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">Luqman Nur</a>
+                </td>
+                <td class="row-center">
+                    <button type="button" class="btn btn-light">
+                        <i class="fas fa-clock" style="color: red;"></i>
+                    </button>
+                </td>
+            </tr>
+
+            <!-- Off-canvas pop -->
+            <tr id="off-canvas-pop" class="table-row">
+                <td class="row-center"><b>ID#####</b></td>
+                <td class="row-center"><label class="badge badge-success">Resolved</label></td>
+                <td>
+                    <strong><a href="">Incident Title (Click row for Off-canvas Popup) </a></strong>
+                    <br>Short description
+                </td>
+                <td class="row-center">
+                    <i class="fas fa-arrow-up" style="color: red"></i>
+                    <strong>HIGH</strong>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align:middle; color: blue"></i>
+                    &nbsp Hardware
+                </td>
+                <td class="row-center">Portal</td>
+                <td class="row-center">
+                    <a href="" class="nav-link" style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/test.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">
+                        Edryana Nadhirah
+                    </a>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align: middle; color: purple"></i>
+                    &nbsp Server
+                </td>
+                <td class="row-center">
+                    <a href="" class="nav-link" style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/IMG_3063.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">Jason Chao</a>
+                </td>
+                <td class="row-center">
+                    <button type="button" class="btn btn-light">
+                        <i class="fas fa-clock" style="color: red;"></i>
+                    </button>
+                </td>
+            </tr>
+
+            <!-- New link pop -->
+            <tr class="table-row" data-href="http://tutorialsplane.com">
+                <td class="row-center"><b>ID#####</b></td>
+                <td class="row-center"><label class="badge badge-dark">In Progress</label></td>
+                <td>
+                    <strong><a href="">Incident Title (Click row for Link Redirect)</a></strong>
+                    <br>Short description
+                </td>
+                <td class="row-center">
+                    <i class="fas fa-arrow-up" style="color: red"></i>
+                    <strong>HIGH</strong>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align:middle; color: blue"></i>
+                    &nbsp IT Support
+                </td>
+                <td class="row-center">Portal</td>
+                <td class="row-center">
+                    <a href="" class="nav-link" style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/test.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">
+                        Tan Jor Seng
+                    </a>
+                </td>
+                <td class="row-center">
+                    <i class="fa fa-folder fa-2x" style="vertical-align: middle; color: purple"></i>
+                    &nbsp Cloud Services
+                </td>
+                <td class="row-center"><a href="" class="nav-link"
+                        style="display:inline-block; vertical-align: middle;">
+                        <img src="{% static "img/IMG_3063.jpg" %}" class="avatar" alt="Avatar"
+                            style="width: 36px; height: 36px;">Juliano Rishi</a>
+                </td>
+                <td class="row-center">
+                    <button type="button" class="btn btn-light">
+                        <i class="fas fa-clock" style="color: red;"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- MODAL -->
+<div class="container">
+
+    <div id="modal_aside_left" class="modal fixed-left fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-aside" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Left fixed sample</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OFF CANVAS -->
+<b class="screen-overlay"></b>
+<aside class="offcanvas offcanvas-right" id="my_offcanvas2">
+
+    <header class="p-4 bg-light border-bottom">
+        <b>ID12345</b>
+        <!-- <h6 class="mb-0">Second offcanvas </h6> -->
+        <button class="btn btn-outline-danger btn-close"> &times Close </button>
+    </header>
+
+    <section id="tabs" class="project-tab">
+
+        <!-- <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Project Tab 1</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Project Tab 2</a>
+                </div>
+              </div>
+            </div>
+        </div> -->
+
+        <div class="container">
+            <a href="" class="nav-link" style="display:inline-block; vertical-align: middle; padding: 1.5rem .4rem;">
+                <img src="{% static "img/test.jpg" %}" class="avatar" alt="Avatar" style="width: 36px; height: 36px;">
+                Edryana Nadhirah
+            </a>
+            <br>
+            <strong style="font-size: 24px; padding: .5rem .4rem;" id="incident-header" data-toggle="dropdown">
+                Specific Incident Title
+            </strong>
+            <p style="font-size: 12px; padding: .5rem .4rem;">Created: Aug 26, 2020 at 3:01 PM</p>
+            <img src="{% static "img/placeholder_photo.png" %}" class="avatar" alt="Avatar"
+                style="width: 320px; height: 220px;">
+
+        </div>
+
+        <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist" style="padding-top: 10px;">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Attributes</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Comments</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent" style="padding-top: 20px;">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+
+                            <ul class="list-group list-group-flush" style="font-size: 13px; padding-bottom: 20px;">
+                                <b style="font-size: 13px;">Classification:</b>
+                                <li class="list-group-item" style="padding: 0.3rem 0rem;">Cras justo odio</li>
+                            </ul>
+
+                            <ul class="list-group list-group-flush" style="font-size: 13px; padding-bottom: 20px;">
+                                <b style="font-size: 13px;">Portal:</b>
+                                <li class="list-group-item" style="padding: 0.3rem 0rem;">Cras justo odio</li>
+                            </ul>
+
+                        </div>
+                        <div class="col-sm">
+                            <ul class="list-group list-group-flush" style="font-size: 13px; padding-bottom: 20px;">
+                                <b style="font-size: 13px;">Classification:</b>
+                                <li class="list-group-item" style="padding: 0.3rem 0rem;">Cras justo odio</li>
+                            </ul>
+
+                            <ul class="list-group list-group-flush" style="font-size: 13px; padding-bottom: 20px;">
+                                <b style="font-size: 13px;">Portal:</b>
+                                <li class="list-group-item" style="padding: 0.3rem 0rem;">Cras justo odio</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="container">
+                    <p>hello world</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <nav class="list-group list-group-flush">
+        <a href="#" class="list-group-item">Home</a>
+        <a href="#" class="list-group-item">About us</a>
+        <a href="#" class="list-group-item">Menu name 1</a>
+        <a href="#" class="list-group-item">Menu name 2</a>
+        <a href="#" class="list-group-item">Menu name 3</a>
+    </nav> -->
+</aside>
+
+
+<!-- <div class="animate__animated animate__fadeInRight">
+    test
+</div> -->
+{% endblock %}

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+#addbutton{
+	
+	/*margin:10px 10px;*/
+	position: relative;
+	top: 50%;
+	-ms-transform:translateY(-50%);
+	transform: translateY(-50%);
+
+}
+
+#userAdd{
+	position: absolute;
+	/* margin: 0 0; */
+	display: inline-block;
+	padding: 0 6px;
+	border: 5px;
+
+}
+
+.profileImg {
+  border-radius: 50%;
+
+}
+/* For font only */
+*{
+	font-family: 'Open Sans', sans-serif ;
+	
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}

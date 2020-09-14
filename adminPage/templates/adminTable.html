@@ -1,0 +1,238 @@
+ {% load static %} {% block form_content %}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title> Admin User List</title>
+	<!-- Datatables css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" !important>
+	<link rel="stylesheet" type="text/css" href= "https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href= "https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+
+    <!-- Google fonts---------------------------------------------------------------------->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- --------------------------------------------------------------------------------->>
+</head>
+
+
+<body>
+  <div>
+    {% include "site/Navbar.html" %}
+  </div>
+     <div class="container"><br>
+ <!--user invite button-->
+ <div class="container-xl">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2><b>User Management</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+            <div style="padding-left:29%">
+                        <!--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Create New User</span></a>
+                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+          --><button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-primary">Delete</button>
+          </div>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <br>
+
+<!-- -------------------------------- modal for the user create -------------------------------- -->
+
+        <div class="modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Invite Users</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method='POST' action = 'adminTable'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Username</label>
+                          <input type="text" name="username" class="form-control" id="formGroupExampleInput" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Email</label>
+                          <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Phone Number</label>
+                            <input type="number" name="phone" class="form-control" id="formGroupExampleInput2" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Role</label>
+                          <input type="text" name="role" class="form-control" id="formGroupExampleInput2" placeholder="Role">
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Group</label>
+                          <select name="group" id="Group">
+                              <option value="SG1">SG1</option>
+                              <option value="SG2">SG2</option>
+                              <option value="Sg3">SG3</option>
+                              >
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Access Level</label>
+                          <select name="accessLevel" id="Group">
+                              <option value="full">Full</option>
+                              <option value="extended">Extended</option>
+                              <option value="Standard">Standard</option>
+                              >
+                            </select>
+                        </div>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2">Password</label>
+                            <input type="password" name="password1" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                          </div>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2">Password</label>
+                            <input type="password" name="password2" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                          <button type="submit" class="btn btn-primary">Create User</button>
+                        </div>
+                    </form>
+                
+              </div>
+            </div>
+          </div>
+        <br>
+
+<!-- -------------------------- update user modal -------------------------- -->
+
+<div class="modal" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User Information</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method='POST' action = 'adminTable'>
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="formGroupExampleInput">Username</label>
+                <input type="text" name="username" class="form-control" id="formGroupExampleInput" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Email</label>
+                <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <label for="formGroupExampleInput2">Phone Number</label>
+                  <input type="number" name="phone" class="form-control" id="formGroupExampleInput2" placeholder="Phone Number">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Role</label>
+                <input type="text" name="role" class="form-control" id="formGroupExampleInput2" placeholder="Role">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Group</label>
+                <select name="group" id="Group">
+                    <option value="SG1">SG1</option>
+                    <option value="SG2">SG2</option>
+                    <option value="Sg3">SG3</option>
+                    >
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Access Level</label>
+                <select name="accessLevel" id="Group">
+                    <option value="full">Full</option>
+                    <option value="extended">Extended</option>
+                    <option value="Standard">Standard</option>
+                    >
+                  </select>
+              </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Password</label>
+                  <input type="password" name="password1" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Password</label>
+                  <input type="password" name="password2" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                <button type="submit" class="btn btn-primary">Update User</button>
+              </div>
+          </form>
+      
+    </div>
+  </div>
+</div>
+<br>
+
+<!-- --------------------------- the user table ---------------------------- -->
+
+        <div>
+            <table id="table1" class="table table-bordered table-hover table-reflow">
+        <thead class="thead-dark">
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Role</th>
+                <th>Group</th>
+                <th>Access Level</th>
+                <th>Admin Status</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+           {% for user in user_list %}
+            <tr>
+                <td><img class='profileImg' src="{%static "img/img_avatar.png" %}" style="size:10px"> {{user.username}} </td>  
+                <td>{{user.email}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.group}}</td>
+                <td>{{user.accessLevel}}</td>
+                <td>{{user.is_admin}}</td>
+            </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+       </div>
+          
+   </div>
+	
+	
+
+
+	<!-- Jquery Datatables -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ 
+ <!-- DataTables JS -->
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="{%static "js/dataTables.js" %}"></script>  
+
+</body>
+</html>
+{% endblock %}

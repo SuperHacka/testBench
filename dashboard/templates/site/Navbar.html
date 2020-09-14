@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/site.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/content.css'%}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/sidebar.css'%}" rel="stylesheet" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}Home{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-32x32.png' %}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" value="en-US" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+  </head>
+
+<!-- sidebar -->
+<body style="background-color: #f2f0f0;" onclick="closeNav()">
+    <div id="mySidebar" class="sidebar shadow" style="z-index:1; padding-top:10%; white-space:nowrap;" >
+        <a href="{% url 'home' %}" style="font-size:14px"><i class="fa fa-fw fa-home">&nbsp; Home</i></a>
+        <a href="{% url 'incident_ticket_overview' %}" style="font-size:14px"><i class="fa fa-fw fa-file-contract">&nbsp; Incident Form</i></a>
+        <a href="{% url 'incident_form' %}" style="font-size:14px"><i class="fa fa-fw fa-file-signature">&nbsp; Incident Request</i></a>
+        <hr class="sidebar-divider"/>
+        <a href="#" style="font-size:14px"><i class="fa fa-fw fa-eye">&nbsp; Incident Overview</i></a>
+        <a href="{% url 'base' %}" style="font-size:14px;"><i class="fa fa-fw fa-tachometer-alt">&nbsp; Dashboard </i></a>
+        <a href="{% url 'sla' %}" style="font-size:14px; "><i class="fa fa-fw fa-wrench">&nbsp; Settings </i></a>
+        <hr class="sidebar-divider"/>
+        <a href="#" style="font-size:14px"><i class="fa fa-fw fa-user-cog">&nbsp; Administrator</i></a>
+        <a href="{% url 'sla' %}" style="font-size:14px"><i class="fa fa-fw fa-clock">&nbsp; SLA</i></a>
+    </div>
+<!-- end sidebar -->
+<!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index:2">
+      <a class="navbar-brand" href="#">
+        <img class="d-inline-block align-top" src="{% static 'img/logo-swiftdesk.png' %}" width="45" height="30" style="padding-right:10px;">
+        SwiftDesk</a>
+      <div class="mr-auto"></div>
+      <div class="col col-lg-2">
+                <div class="btn-group show-on-hover" style="display: inline-block; padding-left:95%;">
+                    <button type="button" class="btn btn-default" data-toggle="dropdown">
+                        <span>
+                            <i class="fa fa-bell"></i>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="top-text-block">
+                                <div class="top-text-heading">You have <b>3 new Knowledge Based Articles</b> trending</div>
+                                <div class="top-text-light">15 minutes ago</div>
+                            </a></li>
+                        <li><a href="#" class="top-text-block">
+                                <div class="top-text-heading">New replies in <b>Report Issue</b></div>
+                                <div class="top-text-light">2 hours ago</div>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" ref="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:3px">
+                     &nbsp;&nbsp;<img src="{% static 'img/avatar.png' %}" style="width: 36px; height: 36px; display:inline-block; vertical-align: middle; border-radius:50%">
+                </a>
+                <div class="dropdown-content" aria-labelledby="navbarDropdownMenuLink" style="z-index:99" >
+                    <a href="#1"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                    <a href="#2"><i class="fa fa-cog" aria-hidden="true"></i> User Settings</a>
+                    <a href="{%url "logout" %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+                </div>
+            </div>
+    </nav>
+
+    <ul class="breadcrumb" style="z-index:2; background-color:aliceblue;">
+      <button class="openbtn py-0" style="background-color:aliceblue; color:black; font-size:12px;" onmouseover="openNav()">&#9776;</button>
+      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Technician Portal</li>
+    </ul>
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/site.js' %}"></script>
+    <script src="{% static 'js/sidebar.js' %}"></script>
+    <script src="{% static 'js/Content.js' %}"></script>
+
+  </body>
+</html>

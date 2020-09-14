@@ -1,0 +1,288 @@
+/* -------------------------------------------------------------------------- */
+/*                            INCIDENT OVERVIEW CSS                           */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------ FONT FAMILIES ----------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* ---------------------------- GENERAL SETTINGS ---------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+/* Allows for smooth scrolling transition */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body settings */
+
+body {
+    background-color: #eee;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* Prevents overflow of page width at responsive screen sizes */
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 100%; */
+}
+
+/* DROPDOWN MENU */
+
+#filter-dropdown{
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#show-hide-col-dropdown {
+    max-height: 250px;
+    overflow-y: auto;
+}
+/* TABLE */
+
+th {
+    text-align: center;
+    /* vertical-align: middle; */
+}
+
+#overview-table td {
+    min-width: 250px;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.row-center {
+    text-align: center;
+}
+
+.table-row {
+    cursor: pointer;
+}
+
+/* ----------------------------- INCIDENT HEADER ---------------------------- */
+
+#incident-header {
+    cursor: pointer;
+}
+
+/* --------------------------- INCIDENT CONTAINER --------------------------- */
+
+.incident_container {
+    border-radius: 15px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+/* ------------------------ BADGE (FOR TICKET STATE) ------------------------ */
+
+.badge {
+    /* border-radius: 2px; */
+    font-size: 12px;
+    line-height: 1;
+    padding: .375rem .5625rem;
+    font-weight: normal
+}
+
+/* ----------------------------- NAV LINK IMAGE ----------------------------- */
+
+.nav-link img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: -8px 0;
+    float: left;
+    margin-right: 10px;
+}
+
+/* ---------------------- CUSTOM SEARCH BAR (OBSOLETE) ---------------------- */
+
+/* #custom-search-input {
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input {
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button {
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover {
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+} */
+
+/* ---------------------------------- MODAL --------------------------------- */
+
+.modal .modal-dialog-aside {
+    width: 350px;
+    max-width: 80%;
+    height: 100%;
+    margin: 0;
+    transform: translate(0);
+    transition: transform .2s;
+}
+
+.modal .modal-dialog-aside .modal-content {
+    height: inherit;
+    border: 0;
+    border-radius: 0;
+}
+
+.modal .modal-dialog-aside .modal-content .modal-body {
+    overflow-y: auto
+}
+
+.modal.fixed-left .modal-dialog-aside {
+    margin-left: auto;
+    transform: translateX(100%);
+}
+
+.modal.fixed-right .modal-dialog-aside {
+    margin-right: auto;
+    transform: translateX(-100%);
+}
+
+.modal.show .modal-dialog-aside {
+    transform: translateX(0);
+}
+
+/* ------------------------------- OFF CANVAS ------------------------------- */
+
+.offcanvas-active {
+    overflow: hidden;
+}
+
+.screen-overlay {
+    width: 0%;
+    height: 100%;
+    z-index: 30;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(34, 34, 34, 0.6);
+    transition: opacity .2s linear, visibility .1s, width 1s ease-in;
+}
+
+.screen-overlay.show {
+    transition: opacity .5s ease, width 0s;
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+}
+
+.offcanvas {
+    width: 350px;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: all .2s;
+    border-radius: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1200;
+    background-color: #fff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.offcanvas.offcanvas-right {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+}
+
+.offcanvas.show {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform .2s;
+}
+
+.offcanvas .btn-close {
+    position: absolute;
+    right: 15px;
+    top: 17px;
+}
+
+/* --------------------------- OFF CANVAS CONTENTS -------------------------- */
+
+.project-tab {
+    padding-top: 10%;
+    margin-top: -8%;
+}
+
+.project-tab #tabs {
+    background: #576271;
+    color: #eee;
+}
+
+.project-tab #tabs h6.section-title {
+    color: #eee;
+}
+
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #3B86FF;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-style: none;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #576271;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project-tab thead {
+    background: #f3f3f3;
+    color: #333;
+}
+
+.project-tab a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}

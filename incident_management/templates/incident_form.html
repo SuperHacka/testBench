@@ -1,0 +1,210 @@
+
+{% extends "form_base.html" %} {% load static %} {% block form_content %}
+<div class="row">
+	<div class="col">
+
+		<!-- Use custom client-side validation (not browser) -->
+		<form class="needs-validation" novalidate>
+
+			<!-- ----------------------- Name and Email Address ------------------------ -->
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputName">Name<span style="color: red">&nbsp*</span></label>
+					<input type="name" class="form-control" id="inputName" placeholder="Name" required />
+					<div class="invalid-feedback">Please enter your name</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputEmail">Email<span style="color: red">&nbsp*</span></label>
+					<input type="email" class="form-control" id="inputEmail" placeholder="Email" required />
+					<div class="invalid-feedback">
+						Please enter a valid email address
+					</div>
+				</div>
+			</div>
+
+			<!-- -------------------------------- Title -------------------------------- -->
+
+			<div class="form-group">
+				<label for="inputTitle">Title<span style="color: red">&nbsp*</span></label>
+				<input type="text" class="form-control" id="inputAddress" placeholder="Incident title" required />
+				<div class="invalid-feedback">Please enter a incident title</div>
+			</div>
+
+			<!-- ----------------------------- Description ----------------------------- -->
+
+			<div class="form-group">
+				<label for="inputDescription">Description:</label><span style="color: red">&nbsp*</span></label>
+				<!-- <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"
+					placeholder="Description of incident" required></textarea> -->
+				<textarea id="summernote" rows="7" name="editordata" placeholder="Description of incident"
+					required></textarea>
+				<div class="invalid-feedback">Please enter a description of the incident</div>
+			</div>
+
+			<!-- ---------------------- Category and Sub-Category ---------------------- -->
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputCategory">Category<span style="color: red">&nbsp*</span></label><br>
+
+					<select id="inputCategory" name="inputCategory" class="selectpicker form-control"
+						data-live-search="true" required>
+						<option style="display:none" selected value="">Not set</option>
+						<option value="1">Applications</option>
+						<option value="2">Server</option>
+					</select>
+
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="inputSubcategory">Sub-category<span style="color: red">&nbsp*</span></label><br>
+
+					<fieldset id="subcategory">
+						<select id="inputSubcategory" name="inputSubcategory" class="selectpicker form-control"
+							data-live-search="true" required>
+							<option style="display: none;" selected value="">Not set</option>
+							<option value="1">A1</option>
+							<option value="1">A2</option>
+							<option value="2">S1</option>
+							<option value="2">S2</option>
+						</select>
+					</fieldset>
+
+				</div>
+			</div>
+
+			<!-- -------------------- Support Group and Assigned To -------------------- -->
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputSupportGroup">Support Group<span style="color: red">&nbsp*</span></label><br>
+
+					<select id="inputSupportGroup" name="inputSupportGroup" class="selectpicker form-control"
+						data-live-search="true" required>
+						<option style="display: none;" selected value="">Not set</option>
+						<option value="SG1">Support Group 1</option>
+						<option value="SG2">Support Group 2</option>
+						<option value="SG3">Support Group 3</option>
+					</select>
+
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="inputAssignee">Assigned to<span style="color: red">&nbsp*</span></label><br>
+
+					<fieldset id="assignee">
+						<select id="inputAssignee" name="inputAssignee" class="selectpicker form-control"
+							data-live-search="true" required>
+							<option style="display: none;" selected value="">Not set</option>
+							<option value="SG1">Muhd Rahiman</option>
+							<option value="SG1">Tan Jor Seng</option>
+							<option value="SG2">Luqman Nur</option>
+							<option value="SG2">Jason Chao</option>
+							<option value="SG3">Edryana Nadhirah</option>
+							<option value="SG3">Ong Hong Teck</option>
+						</select>
+					</fieldset>
+				</div>
+			</div>
+
+			<!-- ------------------------- Impact and Urgency -------------------------- -->
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputImpact">Impact<span style="color: red">&nbsp*</span></label><br>
+
+					<select id="inputImpact" name="inputImpact" class="selectpicker form-control"
+						data-live-search="true" required>
+						<option style="display: none;" selected value="">Not set</option>
+						<option value="1">High</option>
+						<option value="2">Mid</option>
+						<option value="3">Low</option>
+					</select>
+
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="inputUrgency">Urgency<span style="color: red">&nbsp*</span></label><br>
+
+					<fieldset id="urgency">
+						<select id="inputUrgency" name="inputUrgency" class="selectpicker form-control"
+							data-live-search="true" required>
+							<option style="display: none;" selected value="">Not set</option>
+							<option value="1">High</option>
+							<option value="2">Mid</option>
+							<option value="3">Low</option>
+
+						</select>
+					</fieldset>
+				</div>
+
+				<!-- <div class="form-group col-md-4">
+                    <label for="inputPriority">Priority</label><br>
+
+                    <fieldset id="priority">
+                        <select id="inputPriority" name="inputPriority" class="selectpicker form-control"
+                            data-live-search="true" required>
+                            <option style="display: none;" selected value="">Not set</option>
+                            <option value="1">High</option>
+                            <option value="2">Mid</option>
+                            <option value="3">Low</option>
+                        </select>
+                    </fieldset>
+                </div> -->
+			</div>
+
+			<!-- ---------------------------- SLA Datetime ----------------------------- -->
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+
+					<label for="inputSLA">SLA Datetime<span style="color: red">&nbsp*</span></label><br>
+
+					<div id="inputSLA" class="input-group">
+						<input type="datetime-local" class="form-control" required>
+						<div class="invalid-feedback">Please set a SLA deadline</div>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	<div class="col col-lg-3">
+	</div>
+</div>
+
+<script>
+	// JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		"use strict";
+
+		window.addEventListener(
+			"load",
+			function () {
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				var forms = document.getElementsByClassName("needs-validation");
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function (form) {
+					form.addEventListener(
+						"submit",
+						function (event) {
+							if (form.checkValidity() === false) {
+								event.preventDefault();
+								event.stopPropagation();
+							}
+							form.classList.add("was-validated");
+						},
+						false
+					);
+				});
+			},
+			false
+		);
+	})();
+</script>
+{% endblock %}

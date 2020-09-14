@@ -1,0 +1,331 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SLA</title>
+    <link href="{% static 'Vendor/jquery/3.5.1/js/jquery.min.js' %}" rel="stylesheet" media="screen" />
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="{% static 'vendor/fontawesome-free/5.14.0/css/all.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'Vendor/bootstrap/4.5.2/css/bootstrap.css'%}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="{% static 'Vendor/time-picker/timepicker.css' %}" />
+    <link href="{% static 'css/SLA.css'%}" rel="stylesheet" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+</head>
+  <body style="background-color:#f9f9f9">
+    <div class="">
+      {% include "site/NavBar.html" %}
+    </div>
+    <div class="container-fluid">
+      <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#Calendar" style="margin-bottom:35px"><i class="far fa-calendar-alt"></i>&nbsp Calendar</button>
+
+      <h6 style="margin-top:5%">Set SLA Target as: <h6>
+      <table class="table table-hover" style="border-radius:5%; border: 1px solid lightgray; background-blend-mode: soft-light; text-align: center; margin-top:20px" >
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Priority</th>
+            <th scope="col">First Response Time</th>
+            <th scope="col">Every Response Time</th>
+            <th scope="col">Resolution Time</th>
+            <th scope="col">Operational Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><i class="fas fa-circle" style="color:#dc3545; margin-top:30%"> 1</i></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter timespan" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3" >
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="form-row"style="padding-left:15%; padding-top:20px">
+                <div class="dropdown">
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Business Hours</option>
+                    <option value="1">Calendar Hours</option>
+                  </select>
+                </div></td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-circle"style="color:#FFC107; margin-top:30%"> 2</i></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter timespan" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="form-row"style="padding-left:15% ; padding-top:20px">
+                <div class="dropdown">
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Business Hours</option>
+                    <option value="1">Calendar Hours</option>
+                  </select>
+                </div></td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-circle"style="color:#007bff; margin-top:30%"> 3</i></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td ><div class="input-group mb-3">
+                    <input id="slainput" type="text" class="form-control" placeholder="Enter timespan" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3">
+                    <input id="slainput" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="form-row"style="padding-left:15% ; padding-top:20px">
+                <div class="dropdown">
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Business Hours</option>
+                    <option value="1">Calendar Hours</option>
+                  </select>
+                </div></td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-circle"style="color:#28a745; margin-top:30%"> 4</i></td>
+            <td><div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td ><div class="input-group mb-3">
+                    <input id="slainput" type="text" class="form-control" placeholder="Enter timespan" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="input-group mb-3">
+                    <input id="slainput" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div></td>
+            <td><div class="form-row" style="padding-left:15% ; padding-top:20px">
+                <div class="dropdown">
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Business Hours</option>
+                    <option value="1">Calendar Hours</option>
+                  </select>
+                </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+<!-- calendar modal ---------------------------------------------------------------------------------->
+
+<div class="modal fade" id="Calendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="far fa-calendar-alt"></i>&nbsp Calendar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="Title">Title:</label>
+        <input id="Title" type="text" class="form-control d-flex" aria-label="Title" aria-describedby="basic-addon1" style="margin-bottom:10px">
+        <label for="Timezone">Timezone:</label>
+            <div class="dropdown" style="margin-bottom:10px">
+              <select class="form-control Time" type="text" ></select>
+            </div>
+
+        <table class="table table-hover" style="table-layout:fixed; width:100%">
+            <thead class="thead-light" style="text-align:center;">
+              <tr>
+                <th>Work Days:</th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Monday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Tuesday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Wednesday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Thursday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Friday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Saturday</label></th>
+                <th><input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Sunday</label></th>
+              </tr>
+            </thead>
+            <tr style="text-align:center;">
+              <td>Start Time:</td>
+              <td><input id="ST1" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST2" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST3" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST4" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST5" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST6" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ST7" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+            </tr>
+            <tr style="text-align:center;">
+              <td>End Time:</td>
+              <td><input id="ET1" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET2" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET3" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET4" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET5" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET6" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+              <td><input id="ET7" class="form-control example" type="text" style="width:100px; align-content:center; margin-right:-50px"></td>
+            </tr>
+          </table>
+
+
+          <div class="input-group" style="width:60%; margin-bottom:20px; margin-left:21%">
+            <input type="text" class="form-control" placeholder="Days">
+            <input type="text" class="form-control" placeholder="Date">
+            <input type="text" class="form-control" placeholder="Holiday Name">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Add</button>
+            </div>
+          </div>
+          <div class="row" style="text-align:center; width:15cm; margin-left:25%; border: 1px solid lightgray; margin-bottom:5%">
+
+            <table class="table table-hover ">
+              <thead class="thead-light">
+                <tr>
+                  <th>Day</th>
+                  <th>Date</th>
+                  <th>Holiday</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>Monday</td>
+                  <td>31/08/2020</td>
+                  <td>National Day</td>
+                  <td><a href="#"><i class="fa fa-trash"></a></td>
+                </tr>
+                <tr>
+                  <td>Wednesday</td>
+                  <td>16/09/2020</td>
+                  <td>Malaysia Day</td>
+                  <td><a href="#"><i class="fa fa-trash"></a></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </thead>
+
+            </table>
+          </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- end calendar modal-------------------------------------------------------------------------->
+
+<!--notifiation SLA-->
+<table class="table table-hover" style="border-radius:10%; border: 1px solid lightgray; background-blend-mode: soft-light; text-align: center; margin-top:20px;">
+ <div class="container-fluid">
+   <h6 style="margin-top:5%; margin-bottom:2%">Remind agents when the SLA due time approaches: <h6>
+     <div class="form-control1" style="background-color: #dbdbdb; z-index:-5">
+     <form>
+       <div class="form-row">
+         <div class="form-group col-md-6">
+           <label for="inputTarget">When</label>
+           <select class="form-control">
+             <option>First response target</option>
+           </select>
+         </div>
+         <div class="form-group col-md-6">
+           <label for="inputHours"> approaches in</label>
+             <select class="form-control">
+               <option>30 minutes</option>
+               <option>1 hour</option>
+               <option>3 hour</option>
+             </select>
+         </div>
+       </div>
+       <div class="form-group">
+         <label for="inputAddress">Send reminder to</label>
+         <div class="form-fluid">
+           <select class="js-example-basic-multiple" style="width:75%" name="Assigned[]" multiple="multiple" id=select2>
+             <option value="A1">Edryana</option>
+             <option value="A2">Luqman</option>
+             <option value="A3">Rahiman</option>
+             </select>
+         </div>
+       </div>
+           <div class="alert alert-danger" role="alert">
+           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+           &nbsp;Reminders won't be sent for <b>Urgent, High, Medium, Low</b> priority tickets.
+           </div>
+         </form>
+         <p style="color:3px solid black; width:100%"></p>
+         <form style="padding-bottom:5%">
+           <div class="form-row">
+             <div class="form-group col-md-6">
+               <label for="inputTarget">When</label>
+               <select class="form-control">
+                 <option>Resolution target</option>
+               </select>
+             </div>
+             <div class="form-group col-md-6">
+               <label for="inputHours"> approaches in</label>
+                 <select class="form-control">
+                   <option value="A1">Edryana</option>
+                   <option value="A2">Luqman</option>
+                   <option value="A3">Rahiman</option>
+                 </select>
+             </div>
+           </div>
+           <div class="form-group">
+             <label for="inputAddress">Send reminder to</label>
+             <div class="form-fluid">
+               <select class="js-example-basic-multiple" style="width:75%" name="Assigned[]" multiple="multiple" id=select1>
+                 <option value="A1">Edryana</option>
+                 <option value="A2">Luqman</option>
+                 <option value="A3">Rahiman</option>
+                 </select>
+             </div>
+           </div>
+               <div class="alert alert-danger" role="alert">
+               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+               &nbsp;Reminders won't be sent for <b>Urgent, High, Medium, Low</b> priority tickets.
+               </div>
+             </form>
+ </div>
+</table>
+
+<!--end notification---------------------------------------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{% static 'Vendor/time-picker/timepicker.js' %}"></script>
+<script src="{% static 'Vendor/Timezone/dist/timezones.full.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{% static 'vendor/chart/2.7.3/js/Chart.min.js' %}"></script>
+<script src="{% static 'vendor/feather/4.9.0/js/feather.min.js' %}"></script>
+<script src="{% static 'js/SLA.js' %}"></script>
+  </body>
+</html>

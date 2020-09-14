@@ -1,0 +1,228 @@
+{% extends "report_base.html" %} {% load static %} {% block report_content %}
+
+<!-- ------------------------------- Buttons ------------------------------- -->
+<div class="row" style="padding-bottom: 20px;">
+
+    <!-- ------------------------ Left-side buttons set ------------------------ -->
+    <div class="col-sm-6">
+        <div class="buttons-set1-container">
+            <div><button type="button" id="save-button" class="btn btn-light"><i class="fas fa-save"></i> Save</button>
+            </div>
+            <div><button type="button" id="cancel-button" class="btn btn-light"><i class="fas fa-times"></i>
+                    Cancel</button></div>
+            <div><button type="button" class="btn btn-light"><i class="fas fa-wrench"></i> Resolve Incident</button>
+            </div>
+            <div><button type="button" class="btn btn-light"><i class="fas fa-book-medical"></i> Create KB
+                    Article</button></div>
+            <div><button type="button" class="btn btn-light"><i class="fas fa-file-export"></i> Export</button></div>
+        </div>
+    </div>
+
+    <!-- ----------------------- Right-side buttons set ------------------------ -->
+    <div class="col-sm-6">
+        <div class="buttons-set2-container">
+            <div><button type="button" id="save-button" class="btn btn-light"><i class="fas fa-save"></i> Save</button>
+            </div>
+            <div><button type="button" id="cancel-button" class="btn btn-light"><i class="fas fa-times"></i>
+                    Cancel</button></div>
+            <div><button type="button" class="btn btn-light"><i class="fas fa-wrench"></i> Resolve Incident</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <!-- -------------------------- INCIDENT DETAILS --------------------------- -->
+    <div class="col-sm-6">
+        <p class="section-label"><span><b>DETAILS</b></span></p>
+
+        <div class="details-container">
+
+            <!-- ----------------------------- REPORTED BY ----------------------------- -->
+
+            <div id="reported-by" class="section">
+                <p class="details-label">Reported by:</p>
+
+                <a href="" class="nav-link" style="display:inline-block; vertical-align: middle; padding-left: 0;">
+                    <img src="{% static "img/test.jpg" %}" class="avatar" alt="Avatar"
+                        style="width: 36px; height: 36px;">
+                    Luqman Nur
+                </a>
+
+            </div>
+
+            <!-- ---------------------------- SUPPORT GROUP ---------------------------- -->
+
+            <div id="support-group" class="section">
+                <p class="details-label">Support Group:</p>
+
+                <li class="nav-item dropdown" style="list-style-type: none; padding-top: 5px;">
+                    <a class="dropdown-toggle" id="sg-header" href="#" data-toggle="dropdown"
+                        style="text-decoration: none;">
+                        <i class="fa fa-folder fa-2x" style="vertical-align:middle; color: blue"></i>&nbsp
+                        Applications</a>
+
+                    <ul class="dropdown-menu" id="sg-filter">
+
+                        <!-- <div class="input-group input-group-sm" style="padding: 0 10px 5px 10px;">
+                            <input type="text" class="form-control" placeholder="Search filter"
+                                id="filter-dropdown-search" onkeyup="filterFunction()">
+                        </div> -->
+
+                        <li><a class="dropdown-item" id="SG1" href="#"><i class="fa fa-folder fa-2x"
+                                    style="vertical-align:middle; color: red"></i>&nbsp Infrastructure</a></li>
+
+                        <li><a class="dropdown-item"><i class="fa fa-folder fa-2x"
+                                    style="vertical-align:middle; color: pink"></i>&nbsp Applications &raquo </a>
+
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="SG2.1" href="#"><i class="fa fa-folder fa-2x"
+                                            style="vertical-align:middle; color: purple"></i>&nbsp Server</a></li>
+                                <li><a class="dropdown-item">Submenu item 3 &raquo </a>
+
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" id="SG2.1.1" href="#"><i class="fa fa-folder fa-2x"
+                                                    style="vertical-align:middle; color: green"></i>&nbsp Cloud
+                                                Services</a></li>
+                                        <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                        <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                    </ul>
+
+                                </li>
+                                <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                            </ul>
+
+                        </li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a>
+                    </ul>
+                </li>
+            </div>
+
+            <!-- <div class="form-group col-md-3">
+                <label for="inputSupportGroup">Support Group<span style="color: red">&nbsp*</span></label><br>
+
+                <select id="inputSupportGroup" name="inputSupportGroup" class="selectpicker form-control"
+                    data-live-search="true" required>
+                    <option style="display: none;" selected value="">Not set</option>
+                    <option value="SG1">Support Group 1</option>
+                    <option value="SG2">Support Group 2</option>
+                    <option value="SG3">Support Group 3</option>
+                </select>
+
+            </div> -->
+
+            <!-- ----------------------------- ASSIGNED TO ----------------------------- -->
+
+            <div id="assigned-to" class="section">
+                <p class="details-label">Assigned To:</p>
+
+                <fieldset id="assignee">
+                    <select id="inputAssignee" name="inputAssignee" class="selectpicker form-control"
+                        data-live-search="true" required>
+                        <option style="display: none;" selected value="">Not set</option>
+                        <option value="SG1">Muhd Rahiman</option>
+                        <option value="SG1">Tan Jor Seng</option>
+                        <option value="SG2">Luqman Nur</option>
+                        <option value="SG2">Jason Chao</option>
+                        <option value="SG3">Edryana Nadhirah</option>
+                        <option value="SG3">Ong Hong Teck</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="details-container">
+
+            <!-- ------------------------------ CATEGORY ------------------------------- -->
+
+            <div id="category" class="section">
+                <p class="details-label">Category:</p>
+
+                <select id="inputCategory" name="inputCategory" class="selectpicker form-control"
+                    data-live-search="true" required>
+                    <option style="display:none" selected value="">Not set</option>
+                    <option value="1">Applications</option>
+                    <option value="2">Server</option>
+                </select>
+            </div>
+
+            <!-- ---------------------------- SUB-CATEGORY ----------------------------- -->
+
+            <div id="sub-category" class="section">
+                <p class="details-label">Sub-category:</p>
+                <fieldset id="subcategory">
+                    <select id="inputSubcategory" name="inputSubcategory" class="selectpicker form-control"
+                        data-live-search="true" required>
+                        <option style="display: none;" selected value="">Not set</option>
+                        <option value="1">A1</option>
+                        <option value="1">A2</option>
+                        <option value="2">S1</option>
+                        <option value="2">S2</option>
+                    </select>
+                </fieldset>
+            </div>
+
+            <!-- ------------------------------- PORTAL -------------------------------- -->
+
+            <div id="portal" class="section">
+                <p class="details-label">Portal:</p>
+                <select class="selectpicker form-control">
+                    <option>Service Desk</option>
+                    <option>Email</option>
+                    <option>Phone Call</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="details-container">
+
+            <!-- ------------------------------- IMPACT -------------------------------- -->
+
+            <div id="impact" class="section">
+                <p class="details-label">Impact:</p>
+                <select class="selectpicker form-control" style="max-width: 10% !important;">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+
+            <!-- ------------------------------- URGENCY ------------------------------- -->
+
+            <div id="urgency" class="section">
+                <p class="details-label">Urgency:</p>
+                <select class="selectpicker form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+
+        </div>
+
+        <p class="section-label"><span><b>DESCRIPTION</b></span></p>
+
+        <div class="details-container">
+            <div class="form-group">
+                <textarea id="summernote" rows="7" name="editordata" placeholder="Description of incident"
+                    required></textarea>
+                <div class="invalid-feedback">Please enter a description of the incident</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+        <p class="section-label"><span><b>KNOWLEDGE BASE</b></span></p>
+
+
+    </div>
+</div>
+
+{% endblock %}

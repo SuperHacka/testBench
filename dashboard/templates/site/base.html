@@ -1,0 +1,218 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}Home{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicons/favicon-32x32.png' %}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" value="en-US" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/site.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/sidebar.css'%}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/content.css'%}" rel="stylesheet" media="screen" />
+</head>
+<body style="background-color: #f2f0f0;">
+  {% include "site/NavBar.html" %}
+
+<!--widget cards-------------------------------------------------------------------------------------------------------------------------------->
+    <div class="card-group" style="margin-top:5%; margin-left:5%; height:30%; width:90%; border-radius:5px; z-index:-10">
+        <div class="col-md-3">
+            <div class="card align-items-center justify-content-center" >
+                <p>Overdue Tickets</p>
+                <h3 style="color:red; font-size:32px;">20</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card d-flex align-items-center justify-content-center">
+                <p>Open Tickets</p>
+                <h4 style="color:cornflowerblue; font-size:32px">120</h4>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card d-flex align-items-center justify-content-center">
+                <p>New clients this month</p>
+                <h3><i class="fa fa-level-up" style="color:lawngreen" aria-hidden="true"></i> 89</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card d-flex align-items-center justify-content-center">
+                <p>Returning clients</p>
+                <h3><i class="fa fa-level-down" style="color:red" aria-hidden="true"></i> 54</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="z-index:-2">
+        <div class="col-md-3" style="margin-left:6%">
+            <div class="card justify-content-center" style="width:130%; height: 300px; text-align:left; top:20%;">
+                <h1 style="font-size:16px;">Open Tickets By Category</h1>
+                <p>Hardware</p>
+                <div class="container" style="border-radius:2px; text-align:right">
+                    <div class="skills html"><b>30%</b></div>
+                </div>
+
+                <p>Software</p>
+                <div class="container" style="border-radius:2px; text-align:right">
+                    <div class="skills css"><b>80%</b></div>
+                </div>
+
+                <p>Network</p>
+                <div class="container" style="border-radius:2px; text-align:right">
+                    <div class="skills js"><b>50%</b></div>
+                </div>
+
+                <p>Others</p>
+                <div class="container" style="border-radius:2px; text-align:right">
+                    <div class="skills php"><b>40%</b></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card" style="width:110%; height:300px; text-align:left; top:20%; left:28%;">
+                <h1 style="font-size:16px;">Active Incidents by State</h1>
+                <div id="donutchart"></div>
+            </div>
+        </div>
+
+    <!--Incident Summary-->
+        <div class="col-md-3">
+          <div class="card" style="width:120%; height:300px; text-align:left; vertical-align:central; top:20%; left:37%;">
+                <h1 style="font-size:16px;">All New Incidents</h1>
+                <h2 style="font-size:12px; color:gray">Top # of # items</h2>
+                <h2 style="font-size:12px; color:Black; margin-top:15px">Password Reset</h2>
+                <h7 style="font-size:12px">Hardware <span class="badge badge-warning" style="width:15%; vertical-align:top">High</span></h7>
+
+                <h2 style="font-size:12px; color:Black; margin-top:20px">Unable to login email</h2>
+                <h7 style="font-size:12px">Software <span class="badge badge-success" style="width:15%; vertical-align:top">Low</span></h7>
+
+                <h2 style="font-size:12px; color:Black; margin-top:20px">OMGWTFBBQ</h2>
+                <h7 style="font-size:12px">Incident <span class="badge badge-danger" style="width:15%; vertical-align:top">Critical</span></h7>
+          </div>
+        </div>
+        </div>
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card d-flex" style="width:42%; height:100%; text-align:left; top:35%; left:8%; border-radius:10px; ">
+                <div class="container-fluid" style="width:170px; text-align:center; margin-left:2%; margin-top:10%;">
+                    <h1 style="font-size:16px;">Support Tracker</h1>
+                    <h1 style="font-size:48px;">163</h1>
+                    <h1 style="font-size:16px; left:50px">Tickets</h1>
+                </div>
+                <div class="container-fluid" style="text-align:center; width:40%; height:100%; margin-left:55%; margin-top: -35%">
+                    <h1 style="font-size:14px;">New Tickets</h1>
+                    <h1 style="font-size:24px; padding-bottom:5px">29</h1>
+                    <h1 style="font-size:14px;">Open Tickets</h1>
+                    <h1 style="font-size:24px; padding-bottom:5px">63</h1>
+                    <h1 style="font-size:14px;">Response Times</h1>
+                    <h1 style="font-size:24px; padding-bottom:5px">1D</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Progress bar 1 -->
+    <div class="col-lg-9">
+        <div class="card d-flex"  style="width:40%; margin-left:53%; margin-top:-16%;">
+            <div class="container-fluid">
+              <h6>Tickets Completed</h6>
+              <div id="piechart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!--Main layout-->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="{% static 'vendor/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="{% static 'vendor/chart/2.7.3/js/Chart.min.js' %}"></script>
+    <script src="{% static 'vendor/feather/4.9.0/js/feather.min.js' %}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Draw the chart and set the chart values
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+          ['Task', 'Number of Reports'],
+          ['New', 5],
+          ['Assigned', 4],
+          ['Approved', 3],
+          ['Pending Approval', 3]
+        ]);
+
+          // Optional; add a title and set the width and height of the chart
+          var options = {'pieHole':0.3, 'pieSliceTextStyle':{color:'black'},'width':300, 'height':250, 'colors': ['55D8FE', '#FF8373', '#FFDA83', '#A3A0FB'], 'pieStartAngle':30};
+
+          // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+            }
+        </script>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Completion', 'Precentage'],
+          ['Completed',     83],
+          ['Pending',      17]
+        ]);
+
+        var options = {
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script src="{% static 'site/js/dashboard.js' %}"></script>
+    <script src="{% static 'site/js/site.js' %}"></script>
+    <script src="{% static 'site/js/sidebar.js' %}"></script>
+    <script src="{% static 'Content.js' %}"></script>
+</body>
+
+</html>

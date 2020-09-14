@@ -1,0 +1,281 @@
+
+<div class="fixed-top !Important">
+    {% include "site/Navbar.html" %}
+</div>
+ {% load static %} {% block form_content %}
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+ 
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{%static "css/index.css" %}">
+     <link rel="stylesheet" type="text/css" href="{%static "fontawesome/css/all.css" %}">
+     <script src="{%static "js/index.js" %}"></script>
+     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+ 
+ 
+ 
+ </head>
+ <body>
+     <div class="cover">
+ 
+         <header class="jumbotron jumbotron-fluid">
+             <div class="container-fluid text-center">
+                 <h1 class="display-3"  style="padding-top: 10%;">How can we help you?</h1>
+ 
+                 <div class="row">
+                     <div class="col-sm-3"></div>
+                     <div class="col-sm-6">
+                         <div class="input-group">
+                             <input type="text" class="form-control" size="100" placeholder="What do you need help with?">
+                         </div>
+                         <div class="col-sm-3"></div>
+                     </div>
+ 
+ 
+ 
+                     <!--Report issue, make request, find solutions-->
+                     <h4 style=" padding-bottom :100px"></h4>
+ 
+                     <div class="container-fluid text-center">
+                         <div class="col-md-10">
+                             <div class="flex2" style="padding-left:150px">
+                                 <div class="col-md-12">
+                                     <div class="col-md-4 mb-4">
+                                         <div class="card h-180">
+                                             <div class="card-body">
+ 
+                                                 <h4 class="card-title">
+                                                     <i class="btn btn-danger btn-circle btn-xl">
+                                                         <i class="glyphicon glyphicon-exclamation-sign"></i>
+                                                     </i>
+                                                 </h4>
+                                                 <div class="card-text text-center">
+                                                     <h4><b>Report an Issue</b></h4>
+                                                     <h2 style="font-size:15px">Get immediate Help</h2>
+                                                 </div>
+                                                 <a href="{%url 'incident_form'%}" type="button" style="color:white" class="btn btn-danger btn-rounded">Report Issue</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <!--make request-->
+                                 <div class="col-md-12">
+                                     <div class="col-md-4 mb-4">
+                                         <div class="card h-180">
+                                             <div class="card-body">
+                                                 <h4 class="card-title">
+                                                     <i class="btn btn-info btn-circle btn-xl">
+                                                         <i class="glyphicon glyphicon-phone"></i>
+                                                     </i>
+                                                 </h4>
+                                                 <div class="card-text text-center">
+                                                     <h4><b>Make a Request</b></h4>
+                                                     <h2 style="font-size:15px">Browse Service Catalogue</h2>
+                                                 </div>
+                                                 <a href="{%url 'adminTable'%}" type="button" style="color: white" class="btn btn-info btn-rounded">Admin Page</></a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <!--find solutions-->
+                                 <div class="col-md-12">
+                                     <div class="col-md-4 mb-4">
+ 
+                                         <div class="card h-180">
+                                             <div class="card-body">
+                                                 <h4 class="card-title">
+                                                     <i class="btn btn-primary btn-circle btn-xl">
+                                                         <i class="glyphicon glyphicon-search"></i>
+                                                     </i>
+                                                 </h4>
+                                                 <div class="card-text text-center">
+                                                     <h4><b>Find an Answer</b></h4>
+                                                     <h2 style="font-size:15px">Explore Knowledge Base</h2>
+                                                 </div>
+                                                 <a href="#knowledgeBase" type="button" style="color:white" class="btn btn-primary btn-rounded">Find Solutions</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+ 
+                         </div>
+                     </div>
+                 </div>
+                 <!--My Request Summary-->
+                 <div class="w3-container w3-center" style="padding:110px 16px" id="pricing">
+                     <div class="w3-row-padding">
+                         <div class="w3-third w3-section">
+ 
+                             <ul class="w3-ul w3-white w3-hover-shadow">
+                                 <li class="w3-white w3-xlarge w3-padding-15">
+                                     <h5 style="color:#737373; font-size:20px">
+                                         <i class="fas fa-book"></i> <b> My Request Summary</b>
+                                     </h5>
+                                 </li>
+                                 <li class="w3-padding-13"><h6>Pending</h6><h3><b>12</b></h3></li>
+                                 <li class="w3-padding-13"><h6>Awaiting Approval</h6><h3><b>12</b></h3></li>
+                                 <li class="w3-padding-13"><h6>Awaiting Updates</h6><h3><b>2</b></h3></li>
+                             </ul>
+ 
+                         </div>
+                         <!--Popular Solutions-->
+                         <!--TIPS UNINSTALLING SOFTWARE-->
+                         <div class="w3-third w3-section">
+ 
+                             <ul class="w3-ul w3-white w3-hover-shadow">
+                                 <li class="w3-white w3-xlarge w3-padding-15">
+                                     <h5 style="color:#737373; font-size:20px">
+                                         <i class="fas fa-star"></i> <b> Popular Solutions</b>
+                                     </h5>
+                                 </li>
+                                 <li class="w3-padding-10">
+                                     <p>
+                                         <i class="fas fa-bookmark" style="color: #3B86FF"></i>
+                                         <a href="https://www.techradar.com/news/software/10-tips-for-removing-a-program-that-won-t-uninstall-907471" target="_blank" style="color:#3B86FF">
+                                             <b style="font-size:17px">Tips for Uninstalling Software</b>
+                                         </a>
+ 
+                                     </p>
+                                     <div class="flip">
+                                         <p class="alignleft">Short description</p>
+                                         <p class="alignright">YYYY-MM-DD</p>
+                                         <div style="clear:both;"></div>
+                                     </div>
+                                     <div class="panel">Hello World!</div>
+ 
+                                 </li>
+                                 <!--TROUBLESHOOTING DCOM-->
+                                 <li class="w3-padding-10">
+ 
+                                     <p>
+                                         <i class="fas fa-bookmark" style="color: #3B86FF"></i>
+                                         <a href="https://www.virtualizationhowto.com/2019/08/easy-fix-for-dcom-permissions-errors-with-powershell/" target="_blank" style="color:#3B86FF">
+                                             <b style="font-size:17px">Troubleshooting DCOM</b>
+                                         </a>
+                                     </p>
+                                     <div class="flip">
+                                         <p class="alignleft">Short description</p>
+                                         <p class="alignright">YYYY-MM-DD</p>
+                                         <div style="clear:both;"></div>
+                                     </div>
+                                     <div class="panel">Hello World!</div>
+ 
+                                 </li>
+                                 <!--HOW TO SUPPORT FILES-->
+                                 <li class="w3-padding-10">
+ 
+                                     <p>
+                                         <i class="fas fa-bookmark" style="color: #3B86FF"></i>
+                                         <a href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClRlCAK" target="_blank" style="color:#3B86FF">
+                                             <b style="font-size:17px">How to Generate Support Files</b>
+                                         </a>
+                                     </p>
+                                     <div class="flip">
+                                         <p class="alignleft">Short description</p>
+                                         <p class="alignright">YYYY-MM-DD</p>
+                                         <div style="clear:both;"></div>
+                                     </div>
+                                     <div class="panel">Hello World!</div>
+ 
+                                 </li>
+                                 <!--SEE MORE fx-->
+                                 <a href="#KB" target="_blank" style="font-size:17px">See More</a>
+ 
+                             </ul>
+ 
+                         </div>
+ 
+                         <!--End for Popular Solutions-->
+                         <!--Announcement-->
+                         <div class="w3-third w3-section">
+ 
+                             <ul class="w3-ul w3-white w3-hover-shadow">
+                                 <li class="w3-white w3-xlarge w3-padding-15">
+                                     <h5 style="color:#737373">
+                                         <i class="fas fa-bullhorn"></i> <b> Announcement</b>
+                                     </h5>
+                                 </li>
+                                 <li>
+                                     <div class="container-fluid text-center">
+                                         <p class="alignleft" style="padding-top:10px">
+                                             <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+                                                 Important! Email server down
+                                                 <i class="fas fa-sort-down"></i><br />
+                                             </button>
+                                         <p style="font-size:15px"><br /><br /><br /><b>SMTP 550</b></p>
+                                         <div id="demo" class="collapse" style="font-size:15px; padding-bottom: 45px;">
+                                             <p class="alignleft">
+                                                 SMTP error 550 is a generic error message. It means the email could not be delivered.
+                                             </p>
+                                         </div>
+                                         </p>
+                                     </div>
+                                 </li>
+                                 <li>
+                                     <div class="container-fluid text-center">
+                                         <p class="alignleft" style="padding-top:10px">
+                                             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1">
+                                                 Insert announcement
+                                                 <i class="fas fa-sort-down"></i><br />
+                                             </button>
+                                         <p style="font-size:15px"><br /><br /><br /><b>Voicemail password need to be reset.</b></p>
+                                         <div id="demo1" class="collapse" style="font-size:15px; padding-bottom:45px">
+                                             <p class="alignleft" style="padding-bottom: 10px">
+                                                 Telecommunication issue, we need to configure new VoIP systems on the new office extension.<br />
+                                             </p>
+                                         </div>
+                                         </p>
+                                     </div>
+                                 </li>
+                                 <!--SHOWMOREORLESS-->
+                             </ul>
+                         </div>
+                         <!--My Incident-->
+ 
+                     </div>
+                     <div class="w3-third w3-section" style="padding-left:20px">
+ 
+                         <ul class="w3-ul w3-white w3-hover-shadow">
+                             <li class="w3-white w3-xlarge w3-padding-15">
+                                 <h5 style="color:#737373">
+                                     <i class="fas fa-folder-open"></i> <b> My Open Incident</b>
+                                 </h5>
+                             </li>
+                             <li>
+                                 <p class="alignleft1"><a href="#myIncident1" style="color: #3B86FF; font-size:17px"><b>Javascript Error on Hiring Page</b></a></p>
+                                 <div class="flip1">
+                                     <p class="alignleft">######## hours ago</p>
+                                     <p class="alignright">YYYY-MM-DD</p>
+                                     <div style="clear:both;"></div>
+                                 </div>
+                             </li>
+                             <li>
+                                 <p class="alignleft1"><a href="#myIncident2" style="color: #3B86FF; font-size:17px"><b>Azure DevOps Issue</b></a></p>
+                                 <div class="flip1">
+                                     <p class="alignleft1">######## hours ago</p>
+                                     <p class="alignright1">YYYY-MM-DD</p>
+                                     <div style="clear:both;"></div>
+                                 </div>
+                             </li>
+                             <a href="#myIncidentPage" style="font-size:17px">See All</a>
+                         </ul>
+                     </div>
+                 </div>
+ 
+             </div>
+         </header>
+     </div>
+ </body>
+ </html>
+{% endblock %}
+ 
+ 
